@@ -63,9 +63,11 @@ app.get('/test', function (req, res) {
     .post(url, data, config)
     .then((response) => {
       console.log('Successfully subscribed to the Marketplace API:', response.data);
+      res.send({ success: true, response });
     })
     .catch((error) => {
       console.error('Failed to subscribe to the Marketplace API:', error.response.data);
+      res.send({ success: false, message: error.response.data });
     });
 });
 
