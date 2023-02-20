@@ -78,8 +78,8 @@ app.get('/test', function (req, res) {
 });
 
 app.get('/marketplace', function (req, res) {
-  console.log(req);
-  res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
+  // console.log(req);
+  // res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
   // const PAGE_ACCESS_TOKEN =
   //   'EABBnK2ezLU4BADGai3yVysJ1Xg7OYOZCLwO97Yqab45Hw9KQ7ykkIIA0GjZCteZAhMZBe5jK4qNOZBDb1zOG3whvnZBypQqA8ZBNNWjZCZChp9xN9nEwO3ZAMc8iMpEw2kbRff9yoxHRBkN3wWwpneo09eJeZAUeZCI7wjKsaci3nuxR1cZBSVkKHXf1rfEcidonmn7ouZBMym1vheKwZDZD';
   const PAGE_ACCESS_TOKEN = '4617035748420942|lr0--Ut2WHpiXTNK4OUAB5E3CmU';
