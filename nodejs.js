@@ -78,40 +78,41 @@ app.get('/test', function (req, res) {
 });
 
 app.get('/marketplace', function (req, res) {
-  // console.log(req);
-  // res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
+  console.log(req);
+  res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
   // const PAGE_ACCESS_TOKEN =
   //   'EABBnK2ezLU4BADGai3yVysJ1Xg7OYOZCLwO97Yqab45Hw9KQ7ykkIIA0GjZCteZAhMZBe5jK4qNOZBDb1zOG3whvnZBypQqA8ZBNNWjZCZChp9xN9nEwO3ZAMc8iMpEw2kbRff9yoxHRBkN3wWwpneo09eJeZAUeZCI7wjKsaci3nuxR1cZBSVkKHXf1rfEcidonmn7ouZBMym1vheKwZDZD';
-  // const PAGE_ACCESS_TOKEN = '4617035748420942|lr0--Ut2WHpiXTNK4OUAB5E3CmU';
-  // const APP_SECRET = '73aad193ac7831bf6e25dc64805db899';
-  // // Replace with your server URL and Webhooks endpoint
-  // const SERVER_URL = 'https://your-server-url.com';
-  // const WEBHOOKS_ENDPOINT = '/webhooks/facebook';
-  // const VERIFY_TOKEN = 'token';
-  // console.log('here');
-  // // Subscribe to Marketplace Webhooks
-  // axios
-  //   .post(
-  //     `https://graph.facebook.com/v16.0/4617035748420942/subscriptions?access_token=${PAGE_ACCESS_TOKEN}`,
-  //     {
-  //       object: 'marketplace',
-  //       callback_url: 'https://nodejs-fb-marketplace.vercel.app/',
-  //       fields: 'id,title,description,price,currency,condition,availability,images,url,category',
-  //       include_values: true,
-  //       location_types: 'home',
-  //       verify_token: token,
-  //     }
-  //   )
-  //   .then((response) => {
-  //     console.log('Subscribed to Marketplace Webhooks:', response.data);
-  //   })
-  //   .catch((error) => {
-  //     console.error(
-  //       'Failed to subscribe to Marketplace Webhooks:',
-  //       error.response.data.error.message
-  //     );
-  //   });
-  // res.send({ success: true });
+  const PAGE_ACCESS_TOKEN = '4617035748420942|lr0--Ut2WHpiXTNK4OUAB5E3CmU';
+  const APP_SECRET = '73aad193ac7831bf6e25dc64805db899';
+  // Replace with your server URL and Webhooks endpoint
+  const SERVER_URL = 'https://your-server-url.com';
+  const WEBHOOKS_ENDPOINT = '/webhooks/facebook';
+  const VERIFY_TOKEN = 'token';
+  console.log('here');
+  // Subscribe to Marketplace Webhooks
+  axios
+    .post(
+      `https://graph.facebook.com/v16.0/4617035748420942/subscriptions?access_token=${PAGE_ACCESS_TOKEN}`,
+      {
+        object: 'marketplace',
+        callback_url: 'https://nodejs-fb-marketplace.vercel.app/',
+        fields: 'id,title,description,price,currency,condition,availability,images,url,category',
+        include_values: true,
+        location_types: 'home',
+        verify_token: token,
+      }
+    )
+    .then((response) => {
+      console.log('Subscribed to Marketplace Webhooks:', response.data);
+      res.send({ success: true, response });
+    })
+    .catch((error) => {
+      console.error(
+        'Failed to subscribe to Marketplace Webhooks:',
+        error.response.data.error.message
+      );
+      res.send({ success: false, message: error.response.data });
+    });
 });
 
 app.get('/webhook2', function (req, res) {
