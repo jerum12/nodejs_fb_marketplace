@@ -1,5 +1,15 @@
 {
   "version": 2,
-  "name": "fb_marketplace",
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "builds": [
+    {
+      "src": "nodejs.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "nodejs.js"
+    }
+  ]
 }

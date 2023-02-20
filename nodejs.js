@@ -48,7 +48,7 @@ app.post('/instagram', function (req, res) {
   res.sendStatus(200);
 });
 
-//app.listen();
+app.listen();
 
 // Export the Express API
 module.exports = app;
