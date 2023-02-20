@@ -2,8 +2,40 @@
 <html>
   <head>
     <title>Sample HTML Form</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+    <script>
+      function loadData() {
+        // Replace with your Page Access Token and App Secret
+        const PAGE_ACCESS_TOKEN = 'your-page-access-token';
+        const APP_SECRET = 'your-app-secret';
+
+        // Replace with your server URL and Webhooks endpoint
+        const SERVER_URL = 'https://your-server-url.com';
+        const WEBHOOKS_ENDPOINT = '/webhooks/facebook';
+
+        // Subscribe to Marketplace Webhooks
+        axios
+          .post(
+            `https://graph.facebook.com/v14.0/me/subscribed_apps?access_token=${PAGE_ACCESS_TOKEN}`,
+            {
+              subscribed_fields: 'leadgen',
+              callback_url: `${SERVER_URL}${WEBHOOKS_ENDPOINT}`,
+              verify_token: APP_SECRET,
+            }
+          )
+          .then((response) => {
+            console.log('Subscribed to Marketplace Webhooks:', response.data);
+          })
+          .catch((error) => {
+            console.error(
+              'Failed to subscribe to Marketplace Webhooks:',
+              error.response.data.error.message
+            );
+          });
+      }
+    </script>
   </head>
-  <body>
+  <body onload="loadData()">
     <h1>Contact Form</h1>
     <form action="/submit" method="post">
       <div>
