@@ -1,0 +1,5 @@
+{
+  "version": 2,
+  "name": "fb_marketplace",
+  "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
+}
