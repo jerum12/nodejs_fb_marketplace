@@ -38,14 +38,20 @@ app.get('/test', function (req, res) {
 
   // Set up the URL and data for the API request
   const url = `https://graph.facebook.com/v16.0/${APP_ID}/subscriptions`;
+  //https://graph.facebook.com/v16.0/4617035748420942/subscriptions?access_token=${PAGE_ACCESS_TOKEN}
   const data = {
     object: 'marketplace',
+    callback_url: 'https://nodejs-fb-marketplace.vercel.app/webhook2',
+    fields: 'id,title,description,price,currency,condition,availability,images,url,category',
+    include_values: true,
+    location_types: 'home',
+    verify_token: VERIFY_TOKEN,
     access_token: PAGE_ACCESS_TOKEN,
     subscribed_fields: 'feed',
-    fields: 'id,from,message,link,attachments',
-    include_values: true,
-    verify_token: VERIFY_TOKEN,
-    callback_url: 'https://nodejs-fb-marketplace.vercel.app/webhook2',
+    //fields: 'id,from,message,link,attachments',
+    //include_values: true,
+    //verify_token: VERIFY_TOKEN,
+    //callback_url: 'https://nodejs-fb-marketplace.vercel.app/webhook2',
   };
 
   // Set up the Axios request config
